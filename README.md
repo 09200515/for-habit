@@ -1,7 +1,7 @@
 # for-habitのER図
 
 ## ペルソナ
-年齢と性別: 20~40歳 社会人、主婦など
+年齢と性別: 20~40歳 社会人、主婦など 男女問わず
 
 職業: ある程度の時間の融通がきく人。定時前後で退勤し、一日にフリーな時間が３時間程度確保できそうな人。
 
@@ -37,3 +37,55 @@
 if_thenプランニングを採用する。
 写真も投稿できるようにする。
 投稿者のコメントを表示できるようにする。
+
+
+## usersテーブル
+
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| nickname           | string  | null: false               |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
+
+### Association
+
+
+## objectivesテーブル
+
+| Column             | Type      | Options                   |
+| ------------------ | --------- | ------------------------- |
+| big_area           | text      | null: false               |
+| small_step1        | text      | null: false               |
+| small_step2        | text      | null: false               |
+| small_step3        | text      | null: false               |
+| small_step4        | text      |                           |
+| small_step5        | text      |                           |
+| if_then1           | text      | null: false               |
+| if_then2           | text      | null: false               |
+| if_then3           | text      |                           |
+| user               | reference | foreign_key: true         |
+|
+
+
+### Association
+
+## recordsテーブル
+
+| Column             | Type      | Options                   |
+| ------------------ | --------- | ------------------------- |
+| record             | integer   | null: false               |
+| unit               | integer   | null: false               |
+| text               | text      |                           |
+| user               | reference | foreign_key: true         |
+| objecitve          | reference | foreign_key: true         |
+
+### Association
+
+
+## commentsテーブル
+
+| Column             | Type      | Options                   |
+| ------------------ | --------- | ------------------------- |
+| comment            | text      | null: false               |
+| user               | reference | foreign_key: true         |
+| recode             | reference | foreign_key: true         |
