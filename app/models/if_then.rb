@@ -1,0 +1,2 @@
+class IfThen < ApplicationRecord
+end
