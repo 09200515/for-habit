@@ -1,2 +1,0 @@
-class IfThen < ApplicationRecord
-end

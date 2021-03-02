@@ -58,7 +58,7 @@ if_thenプランニングを採用する。
 
 | Column             | Type      | Options                   |
 | ------------------ | --------- | ------------------------- |
-| objective          | string    | null: false               |
+| big_area           | string    | null: false               |
 | text               | text      | null: false               |
 | user               | reference | foreign_key: true         |
 |
