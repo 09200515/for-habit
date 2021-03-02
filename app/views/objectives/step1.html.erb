@@ -1,0 +1,19 @@
+<h2>長期的な目標を設定しよう</h2>
+
+<%= form_for @objective, url: step2_objectives_path, method: :get do |f| %>
+
+  <div class="field">
+    <%= f.label :big_area %><br />
+    <%= f.text_field :big_area %>
+  </div>
+
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Next" %>
+  </div>
+<% end %>

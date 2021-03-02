@@ -1,0 +1,23 @@
+<h2>行動するきっかけを決めよう</h2>
+
+<%= form_for @objective, url: objectives_path, local: true do |f| %>
+
+    <div class="field">
+      <%= f.label :if_then1 %><br />
+      <%= f.text_field :if_then1 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :if_then2 %><br />
+      <%= f.text_field :if_then2 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :if_then3 %><br />
+      <%= f.text_field :if_then3 %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit "設定する" %>
+  </div>
+<% end %>

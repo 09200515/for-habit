@@ -48,26 +48,59 @@ if_thenプランニングを採用する。
 | encrypted_password | string  | null: false               |
 
 ### Association
+- has_many :objectives
+- has_many :small_steps
+- has_many :if_thens
+- has_many :comments
 
 
 ## objectivesテーブル
 
 | Column             | Type      | Options                   |
 | ------------------ | --------- | ------------------------- |
-| big_area           | text      | null: false               |
-| small_step1        | text      | null: false               |
-| small_step2        | text      | null: false               |
-| small_step3        | text      | null: false               |
-| small_step4        | text      |                           |
-| small_step5        | text      |                           |
-| if_then1           | text      | null: false               |
-| if_then2           | text      | null: false               |
-| if_then3           | text      |                           |
+| big_area           | string    | null: false               |
+| text               | text      | null: false               |
 | user               | reference | foreign_key: true         |
 |
 
 
 ### Association
+- belongs_to :user
+- has_one :small_step
+- has_one :if_then
+
+## small_stepsテーブル
+
+| Column             | Type      | Options                   |
+| ------------------ | --------- | ------------------------- |
+| small_step1        | text      | null: false               |
+| small_step2        | text      | null: false               |
+| small_step3        | text      | null: false               |
+| small_step4        | text      |                           |
+| small_step5        | text      |                           |
+| user               | reference | foreign_key: true         |
+| objective          | reference | foreign_key: true         |
+
+### Association
+- belongs_to :user
+- belongs_to :objective
+- has_one :if_then
+
+## if_thensテーブル
+
+| Column             | Type      | Options                   |
+| ------------------ | --------- | ------------------------- |
+| if_then1           | text      | null: false               |
+| if_then2           | text      | null: false               |
+| if_then3           | text      |                           |
+| user               | reference | foreign_key: true         |
+| objective          | reference | foreign_key: true         |
+| small_step         | reference | foreign_key: true         |
+
+### Association
+- belongs_to :user
+- belongs_to :objective
+- belongs_to :small_step
 
 ## recordsテーブル
 
