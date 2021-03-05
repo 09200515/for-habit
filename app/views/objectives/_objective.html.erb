@@ -1,0 +1,40 @@
+<div class="objective">
+  <div class="objective-big">
+    <div class="big-area"><%= objective.big_area %></div>
+    <div class="text"><%= objective.text %></div>
+  </div>
+
+  <div class="small-steps">
+    <ul class="objective-small">
+      <li class="small-step"><%= objective.small_step1 %></li>
+      <li class="small_step"><%= objective.small_step2 %></li>
+      <li class="small_step"><%= objective.small_step3 %></li>
+      <% if objective.small_step4 %>
+         <li class="small_step"><%= objective.small_step4 %></li>
+      <% end %>
+      <% if objective.small_step5 %>
+        <li class="small_step"><%= objective.small_step5 %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="if-thens">
+    <ul class="objectives-if">
+      <li class="if-then"><%= objective.if_then1 %></li>
+      <li class="if-then"><%= objective.if_then2 %></li>
+      <% if objective.if_then3 %>
+        <li class="if-then"><%= objective.if_then3 %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <h1>詳細</h1>
+  <%= column_chart @record.group_by_day(:date, last: 7).sum(:data), xtitle: "日付", ytitle: "時間(分)", width: "1200px", height: "600px" %>
+
+  <%= column_chart @record.group_by_day(:date, last: 80).sum(:data), xtitle: "日付", ytitle: "時間(分)", width: "1200px", height: "600px" %>
+
+  <%= column_chart @record.group_by_month(:date).sum(:data), xtitle: "日付", ytitle: "時間(分)", width: "1200px", height: "600px" %>
+
+  <%= link_to '記録をする', new_objective_record_path(objective.id) %>
+</div>
+

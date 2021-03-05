@@ -7,5 +7,5 @@ class User < ApplicationRecord
     validates :nickname, presence: true
     
   has_many :objectives
-
+  has_many :records
 end

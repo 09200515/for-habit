@@ -1,5 +1,9 @@
 class ObjectivesController < ApplicationController
 
+  def index
+    @objective = Objective.order('created_at DESC')
+  end
+
   def step1
     @objective = Objective.new
   end
@@ -33,9 +37,8 @@ class ObjectivesController < ApplicationController
       if_then3: objective_params[:if_then3],
       user_id: current_user.id
     )
-    binding.pry
     if @objective.save
-      redirect_to root_path
+      redirect_to root_path, notice: "目標を設定しました！"
     else
       render '/objectives/step1'
     end

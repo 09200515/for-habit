@@ -78,9 +78,10 @@ if_thenプランニングを採用する。
 
 | Column             | Type      | Options                   |
 | ------------------ | --------- | ------------------------- |
-| record             | integer   | null: false               |
-| unit               | integer   | null: false               |
-| text               | text      |                           |
+| date               | date      | null: false               |
+| data               | integer   | null: false               |
+| unit               | string    | null: false               |
+| inpression         | text      |                           |
 | user               | reference | foreign_key: true         |
 | objecitve          | reference | foreign_key: true         |
 

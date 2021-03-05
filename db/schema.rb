@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_063529) do
+ActiveRecord::Schema.define(version: 2021_03_02_024211) do
 
   create_table "objectives", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "big_area", null: false
@@ -29,6 +29,19 @@ ActiveRecord::Schema.define(version: 2021_03_01_063529) do
     t.index ["user_id"], name: "index_objectives_on_user_id"
   end
 
+  create_table "records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "date", null: false
+    t.integer "data", null: false
+    t.string "unit", null: false
+    t.text "inpression"
+    t.bigint "user_id"
+    t.bigint "objective_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["objective_id"], name: "index_records_on_objective_id"
+    t.index ["user_id"], name: "index_records_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -43,4 +56,6 @@ ActiveRecord::Schema.define(version: 2021_03_01_063529) do
   end
 
   add_foreign_key "objectives", "users"
+  add_foreign_key "records", "objectives"
+  add_foreign_key "records", "users"
 end
