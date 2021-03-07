@@ -57,3 +57,7 @@ gem 'pry-rails'
 
 gem 'devise'
 
+gem 'chartkick'
+gem 'groupdate'
+
+gem 'jquery-rails'

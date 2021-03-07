@@ -1,0 +1,39 @@
+.steps {
+  display: flex;
+  justify-content: space-around;
+}
+
+.if-title {
+  display: flex;
+  justify-content: center;
+}
+
+.if-title-name {
+  font-size: 25px;
+}
+
+.objectives-if {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.if-then {
+  list-style: none;
+}
+
+.record-lists {
+  overflow: auto;
+  white-space: nowrap;
+
+}
+
+.record-list {
+  display: inline-block;
+}
+
+.record-create {
+  display: flex;
+  justify-content: center;
+}

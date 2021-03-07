@@ -1,0 +1,8 @@
+<%= render "shared/header" %>
+
+<h1>投稿一覧</h1>
+<%= link_to '目標を設定する', step1_objectives_path, class:'objectives-btn' %>
+
+<div class="objectives">
+  <%= render partial: "objective", collection: @objective %>
+</div>

@@ -1,0 +1,9 @@
+.message {
+  display: flex;
+  justify-content: center;
+}
+
+.flash {
+  padding: 2px;
+  font-size: 25px;
+}
