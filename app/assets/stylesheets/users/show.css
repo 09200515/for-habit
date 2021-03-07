@@ -1,0 +1,33 @@
+.my-page {
+}
+
+.user-profile {
+  display: flex;
+  justify-content: center;
+}
+
+.user-name {
+  padding: 10px 20px;
+
+}
+
+.user-top {
+  display: flex;
+  justify-content: center;
+}
+
+.objectives-btn {
+  font-size: 18px;
+  text-decoration: none;
+  padding: 0px 20px 10px;
+  margin: auto;
+}
+
+.habits {
+  display: flex;
+  justify-content: center;
+}
+
+.habit-index {
+  border: 1px solid lightgray;
+}

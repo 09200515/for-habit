@@ -1,12 +1,19 @@
 <%= render "shared/header" %>
-<h1>ユーザーページ</h1>
+<div class="my-page">
+  <div class="user-profile">
+    <h1 class="user-name"><%= @user.nickname %>さんのページ</h1>
+  </div>
+  <div class="user-top">
+    <%= link_to '新しく目標を設定する', step1_objectives_path, class:'objectives-btn' %>
+    <%= link_to '他のユーザーの投稿を見る', objective_records_path(@objective.ids), class:"objectives-btn" %>
+  </div>
+</div>
 
-  <%= link_to '目標を設定する', step1_objectives_path, class:'objectives-btn' %>
-
-  <p>記録を一覧で表示する</p>
-
+<div class="habit-index">
+  <div class="habits">
+    <h2 class="habit-name">Habit一覧</h2>
+  </div>
   <div class="user-objective">
     <%= render partial: "objectives/objective", collection: @objective %>
   </div>
-
-  
+</div>

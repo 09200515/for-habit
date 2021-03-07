@@ -1,0 +1,37 @@
+.header {
+  background-color: #FFE2B2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-name {
+  margin: 5px;
+  padding-left: 5px;
+  font-size: 25px;
+}
+
+.title {
+  font-size: 50px;
+}
+
+.lists-right {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+
+}
+
+.list {
+  font-size: 17px;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid gray;
+  color: black;
+  background-color: white;
+  text-decoration: none;
+}
+
+.messages {
+  display: flex;
+}

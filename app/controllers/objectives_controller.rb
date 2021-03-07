@@ -2,6 +2,7 @@ class ObjectivesController < ApplicationController
 
   def index
     @objective = Objective.order('created_at DESC')
+    @record = @objective.records
   end
 
   def step1
