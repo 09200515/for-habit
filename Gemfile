@@ -60,4 +60,4 @@ gem 'devise'
 gem 'chartkick'
 gem 'groupdate'
 
-gem 'jquery-rails'
+#gem 'jquery-rails'
