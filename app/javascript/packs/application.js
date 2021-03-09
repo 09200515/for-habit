@@ -4,15 +4,14 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+//require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
 require('chartkick')
-require("shart.js")
-require("Chart.bundle")
+require("chart.js")
 
-require("jquery")
+//require("jquery")
 
 require("../time")
 

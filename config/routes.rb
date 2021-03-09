@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :records, only: [:index, :new, :create] do
       collection do
         get 'time'
+        get 'time_save'
       end
     end
   end

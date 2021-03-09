@@ -20,8 +20,20 @@ class RecordsController < ApplicationController
 
   def time
     @record = Record.new
+
   end
 
+  def time_save
+    record = Record.new(record_params)
+    record.date = Date.today
+    record.unit = "分"
+    @record = record
+    if @record.save
+      redirect_to user_path(current_user.id), notice: "記録しました!お疲れ様でした"
+    else
+      render :time
+    end
+  end
 
   private
 
