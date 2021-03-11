@@ -2,7 +2,7 @@ class RecordsController < ApplicationController
 
 
   def index
-    @record = Record.where(date: Date.today).order('created_at DESC')
+    @record = Record.order('created_at DESC')
   end
 
   def new

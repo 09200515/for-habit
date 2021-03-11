@@ -45,7 +45,9 @@
     <li class="record-list"><%= column_chart @record.group_by_month(:date).sum(:data), xtitle: "日付", ytitle: "時間(分)", width: "1200px", height: "500px" %></li>
   </ul>
   <div class="record-create">
-    <%= link_to '記録をする', new_objective_record_path(objective.id), class: "record-btn" %>
+    <%= link_to '記録をする', new_objective_record_path(objective.id), class: "objectives-btn" %>
+    <%= link_to '目標を編集する', edit_objective_path(objective.id), class: "objectives-btn" %>
+    <%#= link_to '削除する', #, class:"objectives-btn" %>
   </div>
 </div>
 

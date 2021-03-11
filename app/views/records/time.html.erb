@@ -5,13 +5,13 @@
 
 <%= form_with model: @record, url: time_save_objective_records_path, method: :get, local: true do |f| %>
 <%= f.text_field :data, id:"times"%>分
-<%= f.submit "保存する" %>
-<% end %>
-
 
 
 
         <h1 id="timer"></h1>
-        <button id="startbutton">start</button>
-        <button id="stopbutton">stop</button>
-        <button id="resetbutton">reset</button>
+        <button type="button" id="startbutton">start</button>
+        <button type="button" id="stopbutton">stop</button>
+        <button type="button" id="resetbutton">reset</button>
+
+<%= f.submit "保存する" %>
+<% end %>

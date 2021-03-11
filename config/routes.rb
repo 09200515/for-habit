@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,
+    controllers: { registrations: 'registrations' }
+
   root to: "records#index"
 
-  resources :objectives, only: [:index, :new, :create] do
+  resources :objectives, only: [:index, :new, :create, :edit, :update] do
     collection do
       get 'step1'
       get 'step2'

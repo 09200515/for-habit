@@ -4,14 +4,17 @@
       for<span class="title">Habit</span>
     </div>
   </div>
+
   <div class='nav'>
-    <ul class='lists-right'>
+    <button type="button" id="menu-lists" class="menu-lists">メニュー</button>
+    <ul class='lists-right hidden' id="lists">
       <% if user_signed_in? %>
         <li><%= link_to 'マイページ', user_path(current_user.id), class: "list" %></li>
+        <li><%= link_to '編集', edit_user_registration_path(current_user.id), class:"list" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "list" %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: 'list' %></li>
-        <li><%= link_to '新規登録', new_user_registration_path, class: 'list' %>
+        <li><%= link_to '新規登録', new_user_registration_path, class: 'list' %></li>
       <% end %>
     </ul>
   </div>

@@ -45,6 +45,10 @@ class ObjectivesController < ApplicationController
     end
   end
 
+  def edit
+    @objective = Objective.find(params[:id])
+  end
+
   private
 
   def objective_params
