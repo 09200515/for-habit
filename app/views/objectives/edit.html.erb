@@ -1,1 +1,58 @@
 <%= render 'shared/header' %>
+
+<%= form_with model: @objective, url: objective_path, local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :big_area %><br />
+    <%= f.text_field :big_area %>
+  </div>
+
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </div>
+
+
+    <div class="field">
+      <%= f.label :small_step1 %><br />
+      <%= f.text_field :small_step1 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :small_step2 %><br />
+      <%= f.text_field :small_step2 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :small_step3 %><br />
+      <%= f.text_field :small_step3 %>
+    </div>
+
+      <div class="field">
+      <%= f.label :small_step4 %><br />
+      <%= f.text_field :small_step4 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :small_step5 %><br />
+      <%= f.text_field :small_step5 %>
+    </div>
+
+
+   <div class="field">
+      <%= f.label :if_then1 %><br />
+      <%= f.text_field :if_then1 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :if_then2 %><br />
+      <%= f.text_field :if_then2 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :if_then3 %><br />
+      <%= f.text_field :if_then3 %>
+    </div>
+
+<%= f.submit "更新する", data: { confirm: '目標を更新しました！' } %>
+<% end %>

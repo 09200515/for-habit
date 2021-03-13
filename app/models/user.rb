@@ -19,6 +19,6 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
     
-  has_many :objectives
-  has_many :records
+  has_many :objectives, dependent: :destroy
+  has_many :records, dependent: :destroy
 end

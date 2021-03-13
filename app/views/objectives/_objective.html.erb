@@ -3,6 +3,7 @@
     <div class="steps">
       <div class="objective-big">
         <p class="objective-title">目標</p>
+        <%= objective.id %>
         <div class="big-area"><%= objective.big_area %></div>
         <div class="text"><%= objective.text %></div>
       </div>
@@ -39,15 +40,19 @@
   </div>
 
   <p class="user-records">詳細</p>
+  
   <ul class="record-lists">
     <li class="record-list"><%= column_chart @record.group_by_day(:date, last: 7).sum(:data), xtitle: "日付", ytitle: "時間(分)", width: "1300px", height: "500px" %></li>
     <li class="record-list"><%= column_chart @record.group_by_day(:date, last: 80).sum(:data), xtitle: "日付", ytitle: "時間(分)", width: "1300px", height: "500px" %></li>
     <li class="record-list"><%= column_chart @record.group_by_month(:date).sum(:data), xtitle: "日付", ytitle: "時間(分)", width: "1200px", height: "500px" %></li>
   </ul>
+
+
+
   <div class="record-create">
     <%= link_to '記録をする', new_objective_record_path(objective.id), class: "objectives-btn" %>
     <%= link_to '目標を編集する', edit_objective_path(objective.id), class: "objectives-btn" %>
-    <%#= link_to '削除する', #, class:"objectives-btn" %>
+    <%= link_to '削除する', objective_path(objective.id), method: :delete, class:"objectives-btn" %>
   </div>
 </div>
 

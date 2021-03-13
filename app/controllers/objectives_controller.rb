@@ -39,7 +39,7 @@ class ObjectivesController < ApplicationController
       user_id: current_user.id
     )
     if @objective.save
-      redirect_to root_path, notice: "目標を設定しました！"
+      redirect_to user_path(current_user.id), notice: "目標を設定しました！"
     else
       render '/objectives/step1'
     end
@@ -47,6 +47,21 @@ class ObjectivesController < ApplicationController
 
   def edit
     @objective = Objective.find(params[:id])
+  end
+
+  def update
+    @objective = Objective.find(params[:id])
+    if @objective.update(objective_params)
+      redirect_to user_path(current_user.id), notice: "目標を更新しました!"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @objective = Objective.find(params[:id])
+    @objective.delete
+    redirect_to user_path(current_user.id), notice: "削除に成功しました"
   end
 
   private

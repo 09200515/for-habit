@@ -13,5 +13,5 @@
         <button type="button" id="stopbutton">stop</button>
         <button type="button" id="resetbutton">reset</button>
 
-<%= f.submit "保存する" %>
+<%= f.submit "保存する", data: { confirm: '記録しました！' } %>
 <% end %>

@@ -55,19 +55,19 @@ if_thenプランニングを採用する。
 
 ## objectivesテーブル
 
-| Column             | Type      | Options                   |
-| ------------------ | --------- | ------------------------- |
-| big_area           | string    | null: false               |
-| text               | text      | null: false               |
-| user               | reference | foreign_key: true         |
-| small_step1        | text      | null: false               |
-| small_step2        | text      | null: false               |
-| small_step3        | text      | null: false               |
-| small_step4        | text      |                           |
-| small_step5        | text      |                           |
-| if_then1           | text      | null: false               |
-| if_then2           | text      | null: false               |
-| if_then3           | text      |                           |
+| Column             | Type       | Options                   |
+| ------------------ | ---------- | ------------------------- |
+| big_area           | string     | null: false               |
+| text               | text       | null: false               |
+| user               | references | foreign_key: true         |
+| small_step1        | text       | null: false               |
+| small_step2        | text       | null: false               |
+| small_step3        | text       | null: false               |
+| small_step4        | text       |                           |
+| small_step5        | text       |                           |
+| if_then1           | text       | null: false               |
+| if_then2           | text       | null: false               |
+| if_then3           | text       |                           |
 
 ### Association
 - belongs_to :user
@@ -76,14 +76,14 @@ if_thenプランニングを採用する。
 
 ## recordsテーブル
 
-| Column             | Type      | Options                   |
-| ------------------ | --------- | ------------------------- |
-| date               | date      | null: false               |
-| data               | integer   | null: false               |
-| unit               | string    | null: false               |
-| inpression         | text      |                           |
-| user               | reference | foreign_key: true         |
-| objecitve          | reference | foreign_key: true         |
+| Column             | Type       | Options                   |
+| ------------------ | ---------- | ------------------------- |
+| date               | date       | null: false               |
+| data               | integer    | null: false               |
+| unit_id            | integer    | null: false               |
+| inpression         | text       |                           |
+| user               | references | foreign_key: true         |
+| objecitve          | references | foreign_key: true         |
 
 ### Association
 - belongs_to :user
@@ -91,8 +91,8 @@ if_thenプランニングを採用する。
 
 ## commentsテーブル
 
-| Column             | Type      | Options                   |
-| ------------------ | --------- | ------------------------- |
-| comment            | text      | null: false               |
-| user               | reference | foreign_key: true         |
-| recode             | reference | foreign_key: true         |
+| Column             | Type       | Options                   |
+| ------------------ | ---------- | ------------------------- |
+| comment            | text       | null: false               |
+| user               | references | foreign_key: true         |
+| recode             | references | foreign_key: true         |

@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
 
+  
   protected
 
   def update_resource(resource, params)

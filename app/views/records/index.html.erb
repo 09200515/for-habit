@@ -7,7 +7,7 @@
     <% @record.each do |record| %>
       <%= record.date %>
       <%= link_to record.user.nickname, user_path(record.user.id), class: "record-user" %>
-      <div class="records"><%= record.user.nickname %>さんは<%= record.data %><%= record.unit %>取り組みました！</div>
+      <div class="records"><%= record.user.nickname %>さんは<%= record.data %><%= record.unit_id %>取り組みました！</div>
     <% end %>
   <% end %>
 

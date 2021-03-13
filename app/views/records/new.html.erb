@@ -19,8 +19,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :unit, "単位" %><br />
-    <%= f.text_field :unit %>
+    <%= f.label :unit_id, "単位" %><br />
+    <%= f.collection_select(:unit_id, Unit.all, :id, :name, {}, {class:"select-box", id:"unit-select"}) %>
   </div>
 
   <div class="field">
@@ -29,6 +29,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "記録する" %>
+    <%= f.submit "記録する",  data: { confirm: '記録しました！' } %>
   </div>
 <% end %>
