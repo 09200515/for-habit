@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get 'step2'
       get 'step3'
     end
-    resources :records, only: [:index, :new, :create] do
+    resources :records, only: [:index, :new, :create, :show] do
       collection do
         get 'time'
         get 'time_save'

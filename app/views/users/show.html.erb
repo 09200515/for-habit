@@ -1,11 +1,11 @@
 <%= render "shared/header" %>
 <div class="my-page">
   <div class="user-profile">
-    <h1 class="user-name"><%= @user.nickname %>さんのページ</h1>
+    <h1 class="user-name"><%= @user.nickname %></h1>
   </div>
   <div class="user-top">
     <%= link_to '新しく目標を設定する', step1_objectives_path, class:'objectives-btn' %>
-    <%#= link_to '他のユーザーの投稿を見る', objective_path, class:"objectives-btn" %>
+    <%= link_to '他のユーザーの投稿を見る', root_path, class:"objectives-btn" %>
   </div>
 </div>
 

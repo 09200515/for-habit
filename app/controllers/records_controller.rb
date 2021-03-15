@@ -36,6 +36,11 @@ class RecordsController < ApplicationController
     end
   end
 
+  def show
+    @objective = Objective.find(params[:id])
+    @record = @objective.records
+  end
+
   private
 
   def record_params
