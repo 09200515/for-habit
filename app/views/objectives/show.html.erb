@@ -57,5 +57,28 @@
     <%= link_to '削除する', objective_path(@objective.id), method: :delete, class:"objectives-btn delete-btn" %>
   
   </div>
+
+<h2 class="records-ind">記録一覧</h2>
+<div class="record-index">
+  <% if @record == [] %>
+    <div class="not-record">まだ記録はありません！</div>
+  <% else %>
+    <% @record.each do |record| %>
+      <%= link_to record.user.nickname, user_path(record.user.id), class: "record-user" %>
+      <% if record.inpression == nil %>
+      <%= record.id %><br />
+        <div class="records"><%= record.user.nickname %>さんは<%= record.data %><%= record.unit.name %>取り組みました！</div>
+      <% else %>
+        <div class="records">
+        <%= record.data %><%= record.unit.name %><br />
+        <%= record.inpression %>
+      <% end %>
+      <%= link_to '記録を削除する', objective_record_path(record.objective.id, record.id), method: :delete, class:"delete-btn" %><br />
+    <% end %>
+
+  <% end %>
+
+</div>
+
 </div>
 

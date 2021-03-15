@@ -1,6 +1,5 @@
 class RecordsController < ApplicationController
 
-
   def index
     @record = Record.order('created_at DESC')
   end
@@ -21,7 +20,6 @@ class RecordsController < ApplicationController
   def time
     @record = Record.new
     @objective = Objective.find(params[:objective_id])
-
   end
 
   def time_save
@@ -36,9 +34,10 @@ class RecordsController < ApplicationController
     end
   end
 
-  def show
-    @objective = Objective.find(params[:id])
-    @record = @objective.records
+  def destroy
+    @record = Record.find(params[:id])
+    @record.destroy
+    redirect_to objective_path(@record.objective_id)
   end
 
   private
