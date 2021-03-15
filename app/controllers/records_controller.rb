@@ -1,4 +1,6 @@
 class RecordsController < ApplicationController
+  before_action :set_record, only: [:edit, :update, :destroy]
+  
 
   def index
     @record = Record.order('created_at DESC')
@@ -34,11 +36,24 @@ class RecordsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @record.update(record_params)
+      redirect_to objective_path(@record.objective_id)
+      return
+    else
+      render :edit
+    end
+  end
+
   def destroy
-    @record = Record.find(params[:id])
     @record.destroy
     redirect_to objective_path(@record.objective_id)
   end
+
+  
 
   private
 
@@ -46,5 +61,8 @@ class RecordsController < ApplicationController
     params.require(:record).permit(:date, :data, :unit_id, :inpression).merge(user_id: current_user.id, objective_id: params[:objective_id])
   end
 
+  def set_record
+    @record = Record.find(params[:id])
+  end
 
 end

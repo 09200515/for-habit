@@ -15,6 +15,7 @@ require("chart.js")
 
 require("../time")
 require("../menu")
+require("../delete")
 
 
 
