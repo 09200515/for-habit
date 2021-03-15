@@ -20,6 +20,7 @@ class RecordsController < ApplicationController
 
   def time
     @record = Record.new
+    @objective = Objective.find(params[:objective_id])
 
   end
 
@@ -29,7 +30,7 @@ class RecordsController < ApplicationController
     @record.unit_id = "1"
     if @record.valid?
       @record.save
-      redirect_to user_path(current_user.id)
+      redirect_to time_objective_records_path(params[:objective_id])
     else
       render :time
     end

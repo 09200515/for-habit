@@ -31,7 +31,7 @@ function time (){
     function count_stop (){
       clearInterval(intervalid);
       start_flag = false;
-      alert("終了しました！お疲れ様でした!");
+      document.getElementById("submit").click();
     };
 
     function padding (){
