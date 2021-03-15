@@ -13,7 +13,7 @@
         <button type="button" id="stopbutton">stop</button>
         <button type="button" id="resetbutton">reset</button>
 
-<%= f.submit "保存する", id: "submit", data: { confirm: '終了しました！お疲れ様でした!' } %>
+<% f.submit "保存する", id: "submit", data: { confirm: '終了しました！お疲れ様でした!' }  %>
 <% end %>
 
 <%= link_to "詳細ページへ戻る", objective_path(@objective.id) %>
