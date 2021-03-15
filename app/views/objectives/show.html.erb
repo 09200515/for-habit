@@ -53,7 +53,7 @@
   <div class="record-create">
     <%= link_to '記録をする', new_objective_record_path(@objective.id), class: "objectives-btn" %>
     <%= link_to '目標を編集する', edit_objective_path(@objective.id), class: "objectives-btn" %>
-    <%= link_to '削除する', objective_path(@objective.id), method: :delete, class:"objectives-btn delete-btn" %>
+    <%= link_to '削除する', objective_path(@objective.id), method: :delete, class:"objectives-btn delete-btn", data: { confirm: '本当に削除してもよろしいですか？' } %>
   </div>
 
 <h2 class="records-ind">記録一覧</h2>
@@ -72,7 +72,7 @@
         <%= record.inpression %>
       <% end %>
       <%= link_to '編集', edit_objective_record_path(record.objective.id, record.id), class:"edit-btn" %>
-      <%= link_to '削除', objective_record_path(record.objective.id, record.id), method: :delete, class:"delete-btn" %><br />
+      <%= link_to '削除', objective_record_path(record.objective.id, record.id), method: :delete, class:"delete-btn", data: { confirm: '本当に削除してもよろしいですか?' } %>
     <% end %>
 
   <% end %>

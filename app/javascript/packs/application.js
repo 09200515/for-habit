@@ -11,11 +11,9 @@ require("channels")
 require('chartkick')
 require("chart.js")
 
-//require("jquery")
 
 require("../time")
 require("../menu")
-require("../delete")
 
 
 

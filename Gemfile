@@ -60,6 +60,6 @@ gem 'devise'
 gem 'chartkick'
 gem 'groupdate'
 
-#gem 'jquery-rails'
-
 gem 'active_hash'
+
+
