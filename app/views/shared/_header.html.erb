@@ -10,7 +10,7 @@
     <ul class='lists-right hidden' id="lists">
       <% if user_signed_in? %>
         <li><%= link_to 'マイページ', user_path(current_user.id), class: "list" %></li>
-        <li><%= link_to '編集', edit_user_registration_path(current_user.id), class:"list" %></li>
+        <li><%= link_to 'アカウント情報編集', edit_user_registration_path(current_user.id), class:"list" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "list" %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: 'list' %></li>

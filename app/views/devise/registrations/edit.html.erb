@@ -24,7 +24,7 @@
           <%= f.label :password_confirmation, "パスワード変更(確認)" %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "再度ご入力ください" %>
         </div>
-        <%= f.submit "変更する", class: "btn btn-primary form-submit-btn". data: { confirm: 'アカウント情報を更新しました！' } %>
+        <%= f.submit "変更する", class: "btn btn-primary form-submit-btn", data: { confirm: 'アカウント情報を更新しました！' } %>
         <%= link_to  "マイページへ戻る", user_path(current_user.id), class: "link-below-user-form" %>
       <% end %>
     </div>

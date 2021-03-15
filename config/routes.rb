@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root to: "records#index"
 
-  resources :objectives, only: [:index, :new, :create, :edit, :update, :destroy] do
+  resources :objectives do
     collection do
       get 'step1'
       get 'step2'

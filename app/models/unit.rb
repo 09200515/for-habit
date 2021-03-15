@@ -7,4 +7,5 @@ class Unit < ActiveHash::Base
     { id: 4, name: 'kg'}
   ]
 
+
 end

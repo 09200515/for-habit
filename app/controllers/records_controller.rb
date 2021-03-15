@@ -12,7 +12,7 @@ class RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
     if @record.save
-      redirect_to user_path(current_user.id), notice: "記録が完了しました！"
+      redirect_to user_path(current_user.id)
     else
       render :new
     end
@@ -29,7 +29,7 @@ class RecordsController < ApplicationController
     @record.unit_id = "1"
     if @record.valid?
       @record.save
-      redirect_to user_path(current_user.id), notice: "記録しました!お疲れ様でした"
+      redirect_to user_path(current_user.id)
     else
       render :time
     end
