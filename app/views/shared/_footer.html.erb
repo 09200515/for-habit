@@ -1,0 +1,19 @@
+<footer class="footer">
+  <div class="footer-content">
+    <div class="top-btn" id='js-scroll-top'>ページトップに戻る</div>
+  </div>
+  <div class="footer-menu">
+    <div class="menu-name">メニュー</div>
+    <ul class="footer-lists">
+      <li class="footer-list"><%= link_to "投稿一覧", root_path %></li>
+      <% if user_signed_in? %>
+        <li class="footer-list"><%= link_to 'マイページ', user_path(current_user.id) %></li>
+        <li class="footer-list"><%= link_to 'アカウント情報編集', edit_user_registration_path(current_user.id) %><li>
+        <li class="footer-list"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %> </li>
+      <% else %>
+        <li class="footer-list"><%= link_to 'ログイン', new_user_session_path %></li>
+        <li class="footer-list"><%= link_to '新規登録', new_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</footer>

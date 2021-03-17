@@ -43,9 +43,9 @@
   <p class="user-records">詳細</p>
   
   <ul class="record-lists">
-    <li class="record-list"><%= column_chart @record.group_by_day(:date, last: 7).sum(:data), xtitle: "日付", ytitle: "時間(分)", width: "1300px", height: "500px" %></li>
-    <li class="record-list"><%= column_chart @record.group_by_day(:date, last: 80).sum(:data), xtitle: "日付", ytitle: "時間(分)", width: "1300px", height: "500px" %></li>
-    <li class="record-list"><%= column_chart @record.group_by_month(:date).sum(:data), xtitle: "日付", ytitle: "時間(分)", width: "1200px", height: "500px" %></li>
+    <li class="record-list"><%= column_chart @record.group_by_day(:date, last: 7).sum(:data), xtitle: "日付", ytitle: "時間・量", width: "1300px", height: "500px" %></li>
+    <li class="record-list"><%= column_chart @record.group_by_day(:date, last: 80).sum(:data), xtitle: "日付", ytitle: "時間・量", width: "1300px", height: "500px" %></li>
+    <li class="record-list"><%= column_chart @record.group_by_month(:date).sum(:data), xtitle: "日付", ytitle: "時間・量", width: "1200px", height: "500px" %></li>
   </ul>
 
 

@@ -14,7 +14,7 @@ require("chart.js")
 
 require("../time")
 require("../menu")
-
+require("../scroll")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
