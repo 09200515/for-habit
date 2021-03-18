@@ -1,4 +1,6 @@
 class ObjectivesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
+  before_action :set_objective, only: [:edit, :update, :show, :destroy]
 
   def index
     @objective = Objective.order('created_at DESC')
@@ -46,11 +48,9 @@ class ObjectivesController < ApplicationController
   end
 
   def edit
-    @objective = Objective.find(params[:id])
   end
 
   def update
-    @objective = Objective.find(params[:id])
     if @objective.update(objective_params)
       redirect_to user_path(current_user.id)
     else
@@ -59,12 +59,10 @@ class ObjectivesController < ApplicationController
   end
 
   def show
-    @objective = Objective.find(params[:id])
     @record = @objective.records
   end
 
   def destroy
-    @objective = Objective.find(params[:id])
     @objective.delete
     redirect_to user_path(current_user.id)
   end
@@ -75,5 +73,7 @@ class ObjectivesController < ApplicationController
     params.require(:objective).permit(:big_area, :text, :small_step1, :small_step2, :small_step3, :small_step4, :small_step5, :if_then1, :if_then2, :if_then3).merge(user_id: current_user.id)
   end
 
-
+  def set_objective
+    @objective = Objective.find(params[:id])
+  end
 end
