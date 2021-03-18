@@ -1,0 +1,21 @@
+  <div class="record-index">
+    <% if @record == [] %>
+      <div class="not-record">まだ誰も記録していません！</div>
+    <% else %>
+      <% @record.each do |r| %>
+        <div class="record-contents">
+          <div class="record-name"><%= link_to r.user.nickname, user_path(r.user.id), class: "record-name" %></div>
+          <div class="record-date"><%= r.date %></div>
+          <% if r.inpression == "" || r.inpression == nil %>
+            <div class="record"><%= r.data %><%= r.unit.name %>取り組みが完了しました！</div>
+          <% else %>
+            <div class="record-inpression"><%= r.inpression %></div>
+          <% end %>
+          <% if user_signed_in? && r.user_id == current_user.id %>
+            <div><%= link_to '編集', edit_objective_record_path(r.objective.id, r.id), class:"btns" %></div>
+            <div><%= link_to '削除', objective_record_path(r.objective.id, r.id), method: :delete, class:"btns", data: { confirm: '本当に削除してもよろしいですか?' } %></div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>

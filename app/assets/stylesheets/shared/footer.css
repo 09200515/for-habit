@@ -1,0 +1,37 @@
+.footer-position {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 147px;
+  box-sizing: border-box;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+background-color: #fff2e6;
+  text-align: center;
+  width: 100vw;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgb(211, 211, 211);
+}
+
+.top-btn {
+  padding: 5px 20px;
+}
+
+.menu-name {
+  margin: 10px;
+}
+
+.footer-lists{
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-list {
+  list-style: none;
+}

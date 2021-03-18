@@ -1,14 +1,13 @@
-<%= render "shared/header" %>
+<div class="footer-position">
+  <%= render "shared/header" %>
 
-<div class="objectives">
-  <div class="objective">
-    <div class="steps">
+  <div class="objectives">
+    <div class="objective">
       <div class="objective-big">
         <p class="objective-title">目標</p>
         <div class="big-area"><%= @objective.big_area %></div>
         <div class="text"><%= @objective.text %></div>
       </div>
-
       <div class="small-steps">
         <p class="objective-title">まいにちの行動</p>
           <ul class="objective-small">
@@ -22,7 +21,6 @@
               <li class="small_step"><%= @objective.small_step5 %></li>
             <% end %>
           </ul>
-        </div>
       </div>
     </div>
 
@@ -40,7 +38,7 @@
     </div>
   </div>
 
-  <p class="user-records">詳細</p>
+  <h2 class="user-records">詳細</h2>
   
   <ul class="record-lists">
     <li class="record-list"><%= column_chart @record.group_by_day(:date, last: 7).sum(:data), xtitle: "日付", ytitle: "時間・量", width: "1300px", height: "500px" %></li>
@@ -48,36 +46,16 @@
     <li class="record-list"><%= column_chart @record.group_by_month(:date).sum(:data), xtitle: "日付", ytitle: "時間・量", width: "1200px", height: "500px" %></li>
   </ul>
 
-
-
   <div class="record-create">
-    <%= link_to '記録をする', new_objective_record_path(@objective.id), class: "objectives-btn" %>
-    <%= link_to '目標を編集する', edit_objective_path(@objective.id), class: "objectives-btn" %>
-    <%= link_to '削除する', objective_path(@objective.id), method: :delete, class:"objectives-btn delete-btn", data: { confirm: '本当に削除してもよろしいですか？' } %>
+    <% if user_signed_in? && @objective.user_id == current_user.id %>
+      <%= link_to '記録をする', new_objective_record_path(@objective.id), class: "objectives-btn" %>
+      <%= link_to '目標を編集する', edit_objective_path(@objective.id), class: "objectives-btn" %>
+      <%= link_to '削除する', objective_path(@objective.id), method: :delete, class:"objectives-btn delete-btn", data: { confirm: '本当に削除してもよろしいですか？' } %>
+    <% end %>
   </div>
 
-<h2 class="records-ind">記録一覧</h2>
-<div class="record-index">
-  <% if @record == [] %>
-    <div class="not-record">まだ記録はありません！</div>
-  <% else %>
-    <% @record.each do |record| %>
-      <%= link_to record.user.nickname, user_path(record.user.id), class: "record-user" %>
-      <% if record.inpression == nil %>
-      <%= record.id %><br />
-        <div class="records"><%= record.user.nickname %>さんは<%= record.data %><%= record.unit.name %>取り組みました！</div>
-      <% else %>
-        <div class="records">
-        <%= record.data %><%= record.unit.name %><br />
-        <%= record.inpression %>
-      <% end %>
-      <%= link_to '編集', edit_objective_record_path(record.objective.id, record.id), class:"edit-btn" %>
-      <%= link_to '削除', objective_record_path(record.objective.id, record.id), method: :delete, class:"delete-btn", data: { confirm: '本当に削除してもよろしいですか?' } %>
-    <% end %>
-
-  <% end %>
-
-</div>
-
+  <h2 class="records-ind">記録一覧</h2>
+  <%= render "records/record" %>
+  <%= render "shared/footer" %>
 </div>
 
