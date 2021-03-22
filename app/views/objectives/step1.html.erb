@@ -6,7 +6,7 @@
     <%= form_for @objective, url: step2_objectives_path, method: :get do |f| %>
       <div class="field">
         <%= f.label :big_area, "習慣化する目標を決めましょう" %><br />
-        <%= f.text_field :big_area, size: "60", placeholder:"例：月に３冊は本を読むようにしたい" %>
+        <%= f.text_field :big_area, size: "60", placeholder:"例：月に３冊は本を読むようにしたい", class: "text-box" %>
       </div>
 
       <div class="field">

@@ -1,3 +1,11 @@
 .create-new {
   text-align: center;
 }
+
+.text-box {
+  height: 30px;
+}
+
+.field {
+  margin: 40px 0px;
+}
