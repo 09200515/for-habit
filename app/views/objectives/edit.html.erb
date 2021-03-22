@@ -1,58 +1,62 @@
-<%= render 'shared/header' %>
+<div class="footer-position">
+  <%= render 'shared/header' %>
 
-<%= form_with model: @objective, url: objective_path, local: true do |f| %>
-
-  <div class="field">
-    <%= f.label :big_area %><br />
-    <%= f.text_field :big_area %>
-  </div>
-
-  <div class="field">
-    <%= f.label :text %><br />
-    <%= f.text_field :text %>
-  </div>
-
-
-    <div class="field">
-      <%= f.label :small_step1 %><br />
-      <%= f.text_field :small_step1 %>
-    </div>
-
-    <div class="field">
-      <%= f.label :small_step2 %><br />
-      <%= f.text_field :small_step2 %>
-    </div>
-
-    <div class="field">
-      <%= f.label :small_step3 %><br />
-      <%= f.text_field :small_step3 %>
-    </div>
+  <div class="create-new">
+    <h1>Habitの編集</h1>
+    <%= form_with model: @objective, url: objective_path, local: true do |f| %>
+      <div class="field">
+        <%= f.label :big_area, "習慣化する目標" %><br />
+        <%= f.text_field :big_area, size: "60", placeholder:"例：月に３冊は本を読むようにしたい", class: "text-box" %>
+      </div>
 
       <div class="field">
-      <%= f.label :small_step4 %><br />
-      <%= f.text_field :small_step4 %>
-    </div>
+        <%= f.label :text, "設定理由（任意）" %><br />
+        <%= f.text_area :text, size: "40x10" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :small_step5 %><br />
-      <%= f.text_field :small_step5 %>
-    </div>
+      <div class="field">
+        <%= f.label :small_step1, "Small Step1 必須" %><br />
+        <%= f.text_field :small_step1, size: "60", placeholder:"例：毎日１回は本を開く", class: "text-box" %>
+      </div>
 
+      <div class="field">
+        <%= f.label :small_step2, "Small Step2  必須" %><br />
+        <%= f.text_field :small_step2, size: "60", placeholder:"例：1日10ページは必ず読む", class: "text-box" %>
+      </div>
 
-   <div class="field">
-      <%= f.label :if_then1 %><br />
-      <%= f.text_field :if_then1 %>
-    </div>
+      <div class="field">
+        <%= f.label :small_step3, "Small Step3 必須" %><br />
+        <%= f.text_field :small_step3, size: "60", placeholder:"例：1週間で１冊を読み切る", class: "text-box" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :if_then2 %><br />
-      <%= f.text_field :if_then2 %>
-    </div>
+        <div class="field">
+        <%= f.label :small_step4, "Small Step4" %><br />
+        <%= f.text_field :small_step4, size: "60", placeholder:"任意", class: "text-box" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :if_then3 %><br />
-      <%= f.text_field :if_then3 %>
-    </div>
+      <div class="field">
+        <%= f.label :small_step5, "Small Step5" %><br />
+        <%= f.text_field :small_step5, size: "60", placeholder:"任意", class: "text-box" %>
+      </div>
 
-<%= f.submit "更新する" %>
-<% end %>
+      <div class="field">
+        <%= f.label :if_then1, "きっかけ１ 必須" %><br />
+        <%= f.text_field :if_then1, size: "60", placeholder:"例：自室の椅子に座ったら本を開く", class: "text-box" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :if_then2, "きっかけ２ 必須" %><br />
+        <%= f.text_field :if_then2, size: "60", placeholder:"例：電車に乗ったら本を開く", class: "text-box" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :if_then3, "きっかけ３" %><br />
+        <%= f.text_field :if_then3, size: "60", placeholder:"任意", class: "text-box" %>
+      </div>
+
+      <%= f.submit "更新する" %>
+    <% end %>
+  </div>
+
+  <%= render "shared/footer" %>
+</div>
