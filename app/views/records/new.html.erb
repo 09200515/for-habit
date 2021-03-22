@@ -5,6 +5,7 @@
     <%= link_to '今から計測する', time_objective_records_path, class:'timer-btn' %>
 
     <%= form_with model: @record, url: objective_records_path, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
       <div class="field">
         <%= f.label :date %><br />
         <div class='input-birth-wrap'>
