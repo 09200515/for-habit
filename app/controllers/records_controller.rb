@@ -14,7 +14,7 @@ class RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
     if @record.save
-      redirect_to objective_path(@record.objective_id)
+      redirect_to objective_path(@record.objective_id), notice: "記録しました！"
     else
       render :new
     end
@@ -42,7 +42,7 @@ class RecordsController < ApplicationController
 
   def update
     if @record.update(record_params)
-      redirect_to objective_path(@record.objective_id)
+      redirect_to objective_path(@record.objective_id), notice: "記録を更新しました！"
       return
     else
       render :edit
@@ -51,7 +51,7 @@ class RecordsController < ApplicationController
 
   def destroy
     @record.destroy
-    redirect_to objective_path(@record.objective_id)
+    redirect_to objective_path(@record.objective_id), notice: "削除しました"
   end
 
   

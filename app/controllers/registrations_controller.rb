@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(_resource)
-    user_path(current_user.id)
+    user_path(current_user.id), notice: "アカウント情報を変更しました"
   end
 
   def configure_account_update_params
