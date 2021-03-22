@@ -1,7 +1,7 @@
 class RecordsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :time, :time_save, :edit, :destroy]
   before_action :set_record, only: [:edit, :update, :destroy]
-  
+  before_action :redirect, only: [:edit, :update, :destroy]
 
   def index
     @record = Record.order('created_at DESC')
@@ -64,6 +64,12 @@ class RecordsController < ApplicationController
 
   def set_record
     @record = Record.find(params[:id])
+  end
+
+  def redirect
+    if current_user.id != @record.user_id
+      redirect_to root_path
+    end
   end
 
 end

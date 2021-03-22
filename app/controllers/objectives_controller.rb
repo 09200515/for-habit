@@ -1,6 +1,7 @@
 class ObjectivesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :destroy]
+  before_action :authenticate_user!, only: [:step1, :step2, :step3, :edit, :destroy]
   before_action :set_objective, only: [:edit, :update, :show, :destroy]
+  before_action :redirect, only: [:edit, :update, :destroy]
 
   def index
     @objective = Objective.order('created_at DESC')
@@ -75,5 +76,11 @@ class ObjectivesController < ApplicationController
 
   def set_objective
     @objective = Objective.find(params[:id])
+  end
+
+  def redirect
+    if current_user.id != @objective.user_id
+      redirect_to root_path
+    end
   end
 end
