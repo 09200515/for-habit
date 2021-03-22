@@ -57,3 +57,14 @@ li {
   display: flex;
 }
 
+.mypage {
+  padding-right: 117px;
+}
+
+.logout {
+  padding-right: 114px;
+}
+
+.signin {
+  padding-right: 52px;
+}

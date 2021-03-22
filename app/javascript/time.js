@@ -19,7 +19,6 @@ function time (){
     function count_down (){
       const timer = document.getElementById("timer");
       if(to_timeup === 0){
-        timer.innerHTML = "Time up!"
         timer.style.color = "red"
         count_stop();
       } else {

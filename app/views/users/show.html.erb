@@ -5,7 +5,9 @@
       <h1 class="user-name"><%= @user.nickname %></h1>
     </div>
     <div class="user-top">
+    <% if user_signed_in? && @user.id == current_user.id %>
       <%= link_to '新しく目標を設定する', step1_objectives_path, class:'objectives-btn' %>
+    <% end %>
       <%= link_to '他のユーザーの投稿を見る', root_path, class:"objectives-btn" %>
     </div>
   </div>

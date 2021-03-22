@@ -17,6 +17,7 @@ class User < ApplicationRecord
           result
         end
 
+        
   validates :nickname, presence: true
     
   has_many :objectives, dependent: :destroy
