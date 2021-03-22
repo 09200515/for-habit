@@ -1,0 +1,19 @@
+.time-contents {
+  text-align: center;
+}
+
+.time-field {
+  margin: 30px 0px;
+}
+
+.time {
+  font-size: 150px;
+}
+
+.timer-btn {
+  margin: 15px 30px;
+}
+
+.submit {
+  display: none;
+}

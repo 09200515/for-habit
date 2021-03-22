@@ -31,4 +31,32 @@
 
 .user-objective {
   border: 1px solid lightgray;
+  background-color: #fae7bc;
+  border-radius: 20px;
+  margin: 40px 200px;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+.objects {
+  display: inline-block;
+  text-align: center;
+}
+
+.object {
+  margin: 5px auto
+}
+
+.objective-link {
+  text-decoration: none;
+  color: black;
+}
+
+.created {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  font-size: 14px;
+  opacity: 0.4;
 }

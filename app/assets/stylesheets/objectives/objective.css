@@ -1,17 +1,32 @@
-
-
-.steps {
+.objective {
   display: flex;
   justify-content: space-around;
 }
 
+.objective-big {
+  text-align: center;
+  border: 1px solid lightgray;
+  padding: 25px 0px;
+}
+
+.big-area {
+  font-size: 20px;
+  padding: 0px 20px 20px 20px;
+}
+
+.objective-title {
+  font-size: 25px;
+}
+
+.step {
+  font-size: 20px;
+  list-style: none;
+}
+
+
 .if-title {
   display: flex;
   justify-content: center;
-}
-
-.if-title-name {
-  font-size: 25px;
 }
 
 .objectives-if {
@@ -21,14 +36,9 @@
   flex-direction: column;
 }
 
-.if-then {
-  list-style: none;
-}
-
 .record-lists {
   overflow: auto;
   white-space: nowrap;
-
 }
 
 .record-list {
@@ -38,4 +48,17 @@
 .record-create {
   display: flex;
   justify-content: center;
+}
+
+.user-records {
+  text-align: center;
+}
+
+.record-lists {
+  border: 1px solid lightgray;
+}
+
+.records-ind {
+  text-align: center;
+  border-top: 1px solid lightgray;
 }

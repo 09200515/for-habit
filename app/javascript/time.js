@@ -8,7 +8,7 @@ function time (){
     var intervalid;
     var start_flag = false;
 
-    var startbutton = document.getElementById("startbutton");
+    const startbutton = document.getElementById("startbutton");
     startbutton.addEventListener("click", () => {
       if(start_flag === false){
         intervalid = setInterval(count_down, 1000);
@@ -17,9 +17,8 @@ function time (){
     })
 
     function count_down (){
-      var timer = document.getElementById("timer");
+      const timer = document.getElementById("timer");
       if(to_timeup === 0){
-        timer.innerHTML = "Time up!"
         timer.style.color = "red"
         count_stop();
       } else {
@@ -29,10 +28,9 @@ function time (){
     }
 
     function count_stop (){
-      console.log(count_stop);
       clearInterval(intervalid);
       start_flag = false;
-      alert("終了しました！お疲れ様でした!");
+      document.getElementById("submit").click();
     };
 
     function padding (){
@@ -46,16 +44,14 @@ function time (){
       timer.innerHTML = min + ":" + sec;
     }
     
-    var stopbutton = document.getElementById("stopbutton");
+    const stopbutton = document.getElementById("stopbutton");
     stopbutton.addEventListener("click", () => {
-      console.log("count_stop");
       clearInterval(intervalid);
       start_flag = false;
     });
 
-    var resetbutton = document.getElementById("resetbutton");
+    const resetbutton = document.getElementById("resetbutton");
     resetbutton.addEventListener("click", () => {
-      console.log("count_reset");
       var timer = document.getElementById("timer");
       clearInterval(intervalid);
       start_flag = false;

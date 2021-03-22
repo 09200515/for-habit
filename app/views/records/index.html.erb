@@ -1,14 +1,5 @@
-<%= render "shared/header" %>
-
-<div class="record-index">
-  <% if @record == [] %>
-    <div class="not-record">本日はまだ誰も記録していません！</div>
-  <% else %>
-    <% @record.each do |record| %>
-      <%= record.date %>
-      <%= link_to record.user.nickname, user_path(record.user.id), class: "record-user" %>
-      <div class="records"><%= record.user.nickname %>さんは本日<%= record.data %><%= record.unit %>行動しました！</div>
-    <% end %>
-  <% end %>
-
+<div class="footer-position">
+  <%= render "shared/header" %>
+  <%= render "record" %>
+  <%= render "shared/footer" %>
 </div>

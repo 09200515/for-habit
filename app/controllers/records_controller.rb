@@ -1,8 +1,10 @@
 class RecordsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:new, :create, :time, :time_save, :edit, :destroy]
+  before_action :set_record, only: [:edit, :update, :destroy]
+  before_action :redirect, only: [:edit, :update, :destroy]
 
   def index
-    @record = Record.where(date: Date.today).order('created_at DESC')
+    @record = Record.order('created_at DESC')
   end
 
   def new
@@ -12,7 +14,7 @@ class RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
     if @record.save
-      redirect_to user_path(current_user.id), notice: "記録が完了しました！"
+      redirect_to objective_path(@record.objective_id), notice: "記録しました！"
     else
       render :new
     end
@@ -20,26 +22,54 @@ class RecordsController < ApplicationController
 
   def time
     @record = Record.new
-
+    @objective = Objective.find(params[:objective_id])
   end
 
   def time_save
-    record = Record.new(record_params)
-    record.date = Date.today
-    record.unit = "分"
-    @record = record
-    if @record.save
-      redirect_to user_path(current_user.id), notice: "記録しました!お疲れ様でした"
+    @record = Record.new(record_params)
+    @record.date = Date.today
+    @record.unit_id = "1"
+    if @record.valid?
+      @record.save
+      redirect_to time_objective_records_path(params[:objective_id])
     else
       render :time
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @record.update(record_params)
+      redirect_to objective_path(@record.objective_id), notice: "記録を更新しました！"
+      return
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @record.destroy
+    redirect_to objective_path(@record.objective_id), notice: "削除しました"
+  end
+
+  
+
   private
 
   def record_params
-    params.require(:record).permit(:date, :data, :unit, :inpression).merge(user_id: current_user.id, objective_id: params[:objective_id])
+    params.require(:record).permit(:date, :data, :unit_id, :inpression).merge(user_id: current_user.id, objective_id: params[:objective_id])
   end
 
+  def set_record
+    @record = Record.find(params[:id])
+  end
+
+  def redirect
+    if current_user.id != @record.user_id
+      redirect_to root_path
+    end
+  end
 
 end

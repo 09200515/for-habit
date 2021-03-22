@@ -1,0 +1,66 @@
+<div class="footer-position">
+  <%= render "shared/header" %>
+  <%= render "shared/flash" %>
+
+  <div class="objectives">
+    <div class="objective-big">
+      <p class="objective-title">＜Habit目標＞</p>
+      <div class="big-area"><%= @objective.big_area %></div>
+      <div class="text"><%= @objective.text %></div>
+    </div>
+
+    <div class="objective">
+      <div class="small-steps">
+        <p class="objective-title">＜スモールステップ＞</p>
+          <ul class="objective-small">
+            <li class="step"><%= @objective.small_step1 %></li>
+            <li class="step"><%= @objective.small_step2 %></li>
+            <li class="step"><%= @objective.small_step3 %></li>
+            <% if @objective.small_step4 %>
+              <li class="step"><%= @objective.small_step4 %></li>
+            <% end %>
+            <% if @objective.small_step5 %>
+              <li class="step"><%= @objective.small_step5 %></li>
+            <% end %>
+          </ul>
+      </div>
+
+      <div class="if-thens">
+        <div class="if-title">
+          <p class="objective-title">＜行動スイッチ＞</p>
+        </div>
+        <ul class="objectives-if">
+          <li class="step"><%= @objective.if_then1 %></li>
+          <li class="step"><%= @objective.if_then2 %></li>
+          <% if @objective.if_then3 %>
+            <li class="step"><%= @objective.if_then3 %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="user-records">詳細</h2>
+    <ul class="record-lists">
+      <li class="record-list"><%= column_chart @record.group_by_day(:date, last: 7).sum(:data), xtitle: "日付", ytitle: "時間・量", width: "1300px", height: "500px" %></li>
+      <li class="record-list"><%= column_chart @record.group_by_day(:date, last: 80).sum(:data), xtitle: "日付", ytitle: "時間・量", width: "1300px", height: "500px" %></li>
+      <li class="record-list"><%= column_chart @record.group_by_month(:date).sum(:data), xtitle: "日付", ytitle: "時間・量", width: "1200px", height: "500px" %></li>
+    </ul>
+
+    <div class="record-create">
+      <% if user_signed_in? && @objective.user_id == current_user.id %>
+        <%= link_to '記録をする', new_objective_record_path(@objective.id), class: "objectives-btn" %>
+        <%= link_to '目標を編集する', edit_objective_path(@objective.id), class: "objectives-btn" %>
+        <%= link_to '目標を削除する', objective_path(@objective.id), method: :delete, class:"objectives-btn delete-btn", data: { confirm: '本当に削除してもよろしいですか？' } %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="records-ind">
+    <h2>記録一覧</h2>
+  </div>
+  <%= render "records/record" %>
+  <%= render "shared/footer" %>
+</div>
+

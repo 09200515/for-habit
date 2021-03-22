@@ -1,35 +1,40 @@
-<%= render "shared/header" %>
+<div class="footer-position">
+  <%= render "shared/header" %>
 
-<h2>毎日続けられそうな行動を設定しよう</h2>
-
-<%= form_for @objective, url: step3_objectives_path, method: :get do |f| %>
-
-    <div class="field">
-      <%= f.label :small_step1 %><br />
-      <%= f.text_field :small_step1 %>
-    </div>
-
-    <div class="field">
-      <%= f.label :small_step2 %><br />
-      <%= f.text_field :small_step2 %>
-    </div>
-
-    <div class="field">
-      <%= f.label :small_step3 %><br />
-      <%= f.text_field :small_step3 %>
-    </div>
+  <div class="create-new">
+    <h1>毎日続けられそうな行動を設定しよう</h1>
+    <%= form_for @objective, url: step3_objectives_path, method: :get do |f| %>
+      <p class="create-step">ステップアップするための簡単な行動を決めましょう</p>
+      <div class="field">
+        <%= f.label :small_step1, "Small Step1 必須" %><br />
+        <%= f.text_field :small_step1, size: "60", placeholder:"例：毎日１回は本を開く", class: "text-box" %>
+      </div>
 
       <div class="field">
-      <%= f.label :small_step4 %><br />
-      <%= f.text_field :small_step4 %>
-    </div>
+        <%= f.label :small_step2, "Small Step2  必須"  %><br />
+        <%= f.text_field :small_step2, size: "60", placeholder:"例：1日10ページは必ず読む", class: "text-box" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :small_step5 %><br />
-      <%= f.text_field :small_step5 %>
-    </div>
+      <div class="field">
+        <%= f.label :small_step3, "Small Step3 必須" %><br />
+        <%= f.text_field :small_step3, size: "60", placeholder:"例：1週間で１冊を読み切る", class: "text-box" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Next" %>
+      <div class="field">
+        <%= f.label :small_step4, "Small Step4" %><br />
+        <%= f.text_field :small_step4, size: "60", placeholder:"任意", class: "text-box" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :small_step5, "Small Step5" %><br />
+        <%= f.text_field :small_step5, size: "60", placeholder:"任意", class: "text-box" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Next" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+
+  <%= render "shared/footer" %>
+</div>

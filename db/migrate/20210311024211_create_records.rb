@@ -3,7 +3,7 @@ class CreateRecords < ActiveRecord::Migration[6.0]
     create_table :records do |t|
       t.date :date, null: false
       t.integer :data, null: false
-      t.string :unit, null: false
+      t.integer :unit_id, null: false
       t.text :inpression
 
       t.references :user, foreign_key: true

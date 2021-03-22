@@ -1,17 +1,17 @@
-<%= render "shared/header" %>
-
-  
-
-
-<%= form_with model: @record, url: time_save_objective_records_path, method: :get, local: true do |f| %>
-<%= f.text_field :data, id:"times"%>分
-<%= f.submit "保存する" %>
-<% end %>
-
-
-
-
-        <h1 id="timer"></h1>
-        <button id="startbutton">start</button>
-        <button id="stopbutton">stop</button>
-        <button id="resetbutton">reset</button>
+<div class="footer-position">
+  <%= render "shared/header" %>
+  <%= form_with model: @record, url: time_save_objective_records_path, method: :get, local: true do |f| %>
+    <div class="time-contents">
+      <div class="time-field" ><%= f.text_field :data, id:"times" %>分</div>
+      <h1 id="timer" class="time">00:00</h1>
+      <div class="timer-btn">
+        <button type="button" id="startbutton", class="btn" >start</button>
+        <button type="button" id="stopbutton", class="btn">stop</button>
+        <button type="button" id="resetbutton", class="btn">reset</button>
+        <%= f.submit "保存する", id: "submit", data: { confirm: '終了しました！お疲れ様でした!' }, class:"submit" %>
+      </div>
+      <div class="return-btn"><%= link_to "Habitへ戻る", objective_path(@objective.id) %></div>
+    </div>
+  <% end %>
+  <%= render "shared/footer" %>
+</div> 

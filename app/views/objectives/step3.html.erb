@@ -1,26 +1,29 @@
-<%= render "shared/header" %>
+<div class="footer-position">
+  <%= render "shared/header" %>
+  <div class="create-new">
+    <h2>実行するきっかけを決めよう</h2>
+    <%= form_for @objective, url: objectives_path, local: true do |f| %>
+      <p class="create-step">きっかけを決めると行動しやすくなります</p>
+      <div class="field">
+        <%= f.label :if_then1, "きっかけ１ 必須" %><br />
+        <%= f.text_field :if_then1, size: "60", placeholder:"例：自室の椅子に座ったら本を開く", class: "text-box" %>
+      </div>
 
+      <div class="field">
+        <%= f.label :if_then2, "きっかけ２ 必須" %><br />
+        <%= f.text_field :if_then2, size: "60", placeholder:"例：電車に乗ったら本を開く", class: "text-box" %>
+      </div>
 
-<h2>行動するきっかけを決めよう</h2>
+      <div class="field">
+        <%= f.label :if_then3, "きっかけ３" %><br />
+        <%= f.text_field :if_then3, size: "60", placeholder:"任意", class: "text-box" %>
+      </div>
 
-<%= form_for @objective, url: objectives_path, local: true do |f| %>
-
-    <div class="field">
-      <%= f.label :if_then1 %><br />
-      <%= f.text_field :if_then1 %>
-    </div>
-
-    <div class="field">
-      <%= f.label :if_then2 %><br />
-      <%= f.text_field :if_then2 %>
-    </div>
-
-    <div class="field">
-      <%= f.label :if_then3 %><br />
-      <%= f.text_field :if_then3 %>
-    </div>
-
-  <div class="actions">
-    <%= f.submit "設定する" %>
+      <div class="actions">
+        <%= f.submit "設定する" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+
+  <%= render "shared/footer" %>
+</div>

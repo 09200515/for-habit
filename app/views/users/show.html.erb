@@ -1,19 +1,35 @@
-<%= render "shared/header" %>
-<div class="my-page">
-  <div class="user-profile">
-    <h1 class="user-name"><%= @user.nickname %>さんのページ</h1>
+<div class="footer-position">
+  <%= render "shared/header" %>
+  <%= render "shared/flash" %>
+  <div class="my-page">
+    <div class="user-profile">
+      <h1 class="user-name"><%= @user.nickname %></h1>
+    </div>
+    <div class="user-top">
+    <% if user_signed_in? && @user.id == current_user.id %>
+      <%= link_to '新しく目標を設定する', step1_objectives_path, class:'objectives-btn' %>
+    <% end %>
+      <%= link_to '他のユーザーの投稿を見る', root_path, class:"objectives-btn" %>
+    </div>
   </div>
-  <div class="user-top">
-    <%= link_to '新しく目標を設定する', step1_objectives_path, class:'objectives-btn' %>
-    <%= link_to '他のユーザーの投稿を見る', objective_records_path(@objective.ids), class:"objectives-btn" %>
-  </div>
-</div>
 
-<div class="habit-index">
-  <div class="habits">
-    <h2 class="habit-name">Habit一覧</h2>
+  <div class="habit-index">
+    <div class="habits">
+      <h2 class="habit-name">Habit一覧</h2>
+    </div>
+      <% @objective.each do |o| %>
+        <div class="user-objective">
+          <%= link_to(objective_path(o.id), class:"objective-link") do %>
+            <div class="objects">
+              <p class="area">＜Habit＞</p>
+              <div class="object"><%= o.big_area %></div>
+              <div class="object"><%= o.text %></div>
+            </div>
+            <div class="created">開始日：<%= o.created_at.strftime('%Y/%m/%d') %></div>
+          <% end %>
+        </div>
+      <% end %>
   </div>
-  <div class="user-objective">
-    <%= render partial: "objectives/objective", collection: @objective %>
-  </div>
+
+  <%= render "shared/footer" %>
 </div>

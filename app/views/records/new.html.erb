@@ -1,34 +1,36 @@
-<%= render "shared/header" %>
+<div class="footer-position">
+  <%= render "shared/header" %>
+  <div class="new-all">
+    <h2>計測・記録</h2>
+    <%= link_to '今から計測する', time_objective_records_path, class:'timer-btn' %>
 
-<h2>計測する</h2>
+    <%= form_with model: @record, url: objective_records_path, local: true do |f| %>
+      <div class="field">
+        <%= f.label :date %><br />
+        <div class='input-birth-wrap'>
+          <%= raw sprintf(f.date_select(:date, class:'select-birth', id:"birth-date", use_month_numbers: true, prompt:'--', start_year: (Time.now.year - 1), end_year: (Time.now.year), date_separator: '%s'), "年", "月") + "日" %>
+        </div>
+      </div>
 
-<%= link_to '今から計測する', time_objective_records_path, class:'timer-btn' %>
+      <div class="field">
+        <%= f.label :data, "実行した時間・量" %><br />
+        <%= f.text_field :data %>
+      </div>
 
-<%= form_with model: @record, url: objective_records_path, local: true do |f| %>
+      <div class="field">
+        <%= f.label :unit_id, "単位" %><br />
+        <%= f.collection_select(:unit_id, Unit.all, :id, :name, {}, {class:"select-box", id:"unit-select"}) %>
+      </div>
 
-  <div class="field">
-    <%= f.label :date %><br />
-    <div class='input-birth-wrap'>
-      <%= raw sprintf(f.date_select(:date, class:'select-birth', id:"birth-date", use_month_numbers: true, prompt:'--', start_year: 2018, end_year: (Time.now.year), date_separator: '%s'), "年", "月") + "日" %>
-    </div>
+      <div class="field">
+        <%= f.label :inpression, "本文" %><br />
+        <%= f.text_area :inpression, size: "40x10" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "記録する" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :data, "行った時間" %><br />
-    <%= f.text_field :data %>
-  </div>
-
-  <div class="field">
-    <%= f.label :unit, "単位" %><br />
-    <%= f.text_field :unit %>
-  </div>
-
-  <div class="field">
-    <%= f.label :inpression, "本文" %><br />
-    <%= f.text_field :inpression %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "記録する" %>
-  </div>
-<% end %>
+  <%= render "shared/footer" %>
+</div>
