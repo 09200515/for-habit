@@ -4,6 +4,7 @@
   <div class="create-new">
     <h1>Habitの編集</h1>
     <%= form_with model: @objective, url: objective_path, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
       <div class="field">
         <%= f.label :big_area, "習慣化する目標" %><br />
         <%= f.text_field :big_area, size: "60", placeholder:"例：月に３冊は本を読むようにしたい", class: "text-box" %>

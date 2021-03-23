@@ -3,8 +3,8 @@
 
   <div class="create-new">
     <h1>長期的な目標を設定しよう</h1>
-    <%= render 'shared/error_messages', model: f.object %>
     <%= form_for @objective, url: step2_objectives_path, method: :get do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
       <div class="field">
         <%= f.label :big_area, "習慣化する目標を決めましょう" %><br />
         <%= f.text_field :big_area, size: "60", placeholder:"例：月に３冊は本を読むようにしたい", class: "text-box" %>
