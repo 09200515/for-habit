@@ -2,7 +2,7 @@
   <%= render "shared/header" %>
   <%= form_with model: @record, url: time_save_objective_records_path, method: :get, local: true do |f| %>
     <div class="time-contents">
-      <div class="time-field" ><%= f.text_field :data, id:"times" %>分</div>
+      <div class="time-field" ><%= f.text_field :data, id:"times", size: "30", maxlength: "2", placeholder:"2桁の整数を入力してください", class:"text-box" %>分</div>
       <h1 id="timer" class="time">00:00</h1>
       <div class="timer-btn">
         <button type="button" id="startbutton", class="btn" >start</button>

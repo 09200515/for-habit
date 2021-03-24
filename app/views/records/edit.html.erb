@@ -1,32 +1,36 @@
-<%= render "shared/header" %>
+<div class="footer-position">
+  <%= render "shared/header" %>
+  <div class="new-all">
+    <h2>計測・記録</h2>
 
-<h2>記録を編集する</h2>
+    <%= form_with model: @record, url: objective_record_path(@record.objective_id, @record.id), method: :patch, local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+      <div class="field">
+        <%= f.label :date %><br />
+        <div class='input-birth-wrap'>
+          <%= raw sprintf(f.date_select(:date, class:'select-birth', id:"birth-date", use_month_numbers: true, prompt:'--', start_year: (Time.now.year - 1), end_year: (Time.now.year), date_separator: '%s'), "年", "月") + "日" %>
+        </div>
+      </div>
 
-<%= form_with model: @record, url: objective_record_path, local: true do |f| %>
+      <div class="field">
+        <%= f.label :data, "実行した時間・量" %><br />
+        <%= f.text_field :data %>
+      </div>
 
-  <div class="field">
-    <%= f.label :date %><br />
-    <div class='input-birth-wrap'>
-      <%= raw sprintf(f.date_select(:date, class:'select-birth', id:"birth-date", use_month_numbers: true, prompt:'--', start_year: (Time.now.year - 1), end_year: (Time.now.year), date_separator: '%s'), "年", "月") + "日" %>
-    </div>
+      <div class="field">
+        <%= f.label :unit_id, "単位" %><br />
+        <%= f.collection_select(:unit_id, Unit.all, :id, :name, {}, {class:"select-box", id:"unit-select"}) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :inpression, "本文" %><br />
+        <%= f.text_area :inpression, size: "40x10" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "記録する" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :data, "行った時間" %><br />
-    <%= f.text_field :data %>
-  </div>
-
-  <div class="field">
-    <%= f.label :unit_id, "単位" %><br />
-    <%= f.collection_select(:unit_id, Unit.all, :id, :name, {}, {class:"select-box", id:"unit-select"}) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :inpression, "本文" %><br />
-    <%= f.text_field :inpression %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "更新する" %>
-  </div>
-<% end %>
+  <%= render "shared/footer" %>
+</div>

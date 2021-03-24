@@ -19,6 +19,7 @@ class User < ApplicationRecord
 
         
   validates :nickname, presence: true
+  validates_format_of :password, with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/
     
   has_many :objectives, dependent: :destroy
   has_many :records, dependent: :destroy

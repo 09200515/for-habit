@@ -2,7 +2,7 @@ class Record < ApplicationRecord
 
   with_options presence: true do
     validates :date
-    validates :data
+    validates :data, numericality: { only_integer: true }
     validates :unit_id, numericality: { other_than: 0, message: 'select' }
   end
 

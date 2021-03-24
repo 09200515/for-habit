@@ -17,3 +17,14 @@
 .submit {
   display: none;
 }
+
+.btn {
+  width: 70px;
+  height: 30px;
+  margin: 0px 15px;
+  font-size: 15px;
+}
+
+.return-btn {
+  margin: 30px 30px;
+}
