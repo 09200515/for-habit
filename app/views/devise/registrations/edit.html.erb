@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3 form-wrapper">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <%= render "shared/error_messages", resource: resource %>
+          <%= render 'shared/error_messages', model: f.object %>
           <div class = 'form-group'>
             <%= f.label :nickname, "ニックネーム" %><br />
             <%= f.text_field :nickname, autofocus: true, class: "form-control", placeholder: "最大10文字", maxlength: 10 %>
@@ -26,7 +26,7 @@
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "再度ご入力ください" %>
           </div>
           <div class="form-group">
-            <%= f.submit "変更する", class: "btn btn-primary form-submit-btn", data: { confirm: 'アカウント情報を更新しました！' } %><br />
+            <%= f.submit "変更する", class: "btn btn-primary form-submit-btn" %><br />
           </div>
           <div class="form-group">
             <%= link_to  "マイページへ戻る", user_path(current_user.id), class: "link-below-user-form" %>
