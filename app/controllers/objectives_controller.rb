@@ -53,7 +53,7 @@ class ObjectivesController < ApplicationController
 
   def update
     if @objective.update(objective_params)
-      redirect_to user_path(current_user.id), notice: "目標の編集が完了しました！"
+      redirect_to objective_path(@objective.id), notice: "目標の編集が完了しました！"
     else
       render :edit
     end
