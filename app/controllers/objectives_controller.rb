@@ -64,7 +64,7 @@ class ObjectivesController < ApplicationController
   end
 
   def destroy
-    @objective.delete
+    @objective.destroy
     redirect_to user_path(current_user.id), notice: "目標の削除が完了しました"
   end
 
