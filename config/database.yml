@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: for_habit_production
-  username: for_habit
-  password: <%= ENV['FOR_HABIT_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
