@@ -72,6 +72,7 @@ gem 'chartkick'
 gem 'groupdate'
 
 gem 'active_hash'
+gem 'dotenv-rails'
 
 
 group :production do
