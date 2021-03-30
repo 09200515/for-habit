@@ -173,7 +173,7 @@ RSpec.describe '目標編集', type: :system do
       fill_in 'きっかけ１', with: "#{@objective1.if_then1}+編集したテキスト"
       fill_in 'きっかけ２', with: "#{@objective1.if_then2}+編集したテキスト"
       fill_in 'きっかけ３', with: "#{@objective1.if_then3}+編集したテキスト"
-      # 編集してもTweetモデルのカウントは変わらないことを確認する
+      # 編集してもObjectiveモデルのカウントは変わらないことを確認する
       expect{
         find('input[name="commit"]').click
       }.to change { Objective.count }.by(0)
@@ -215,12 +215,12 @@ RSpec.describe '目標削除', type: :system do
       # 目標1に「削除」ボタンがあることを確認する
       expect(page).to have_content('目標を削除する')
       # 削除確認画面でOKボタンを押すと、削除が完了しましたとの記述が表示され、レコードの数が１減ることを確認する
-      expect{
-        page.accept_confirm do
-          find('.delete-btn')[0].hover.click_link('目標を削除する', href: objective_path(@objective1.id)).click
-        end
-        expect(page).to have_content('目標を削除しました')
-      }.to change { Objective.count }.by(-1)
+      page.accept_confirm do
+        expect{
+          click_on :delete_btn
+          sleep 0.3
+        }.to change { Objective.count }.by(-1)
+      end
       # マイページに遷移したことを確認する
       expect(current_path).to eq(user_path(@objective1.user.id))
       # トップページにはツイート1の内容が存在しないことを確認する（テキスト）

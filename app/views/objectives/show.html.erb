@@ -52,7 +52,7 @@
       <% if user_signed_in? && @objective.user_id == current_user.id %>
         <%= link_to '記録をする', new_objective_record_path(@objective.id), class: "objectives-btn" %>
         <%= link_to '目標を編集する', edit_objective_path(@objective.id), class: "objectives-btn" %>
-        <%= link_to '目標を削除する', objective_path(@objective.id), method: :delete, class:"objectives-btn delete-btn", data: { confirm: '本当に削除してもよろしいですか？' } %>
+        <%= link_to '目標を削除する', objective_path(@objective.id), method: :delete, class:"objectives-btn delete-btn", id: "delete_btn", data: { confirm: '本当に削除してもよろしいですか？' } %>
       <% end %>
     </div>
   </div>
