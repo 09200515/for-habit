@@ -197,7 +197,6 @@ end
 RSpec.describe '目標削除', type: :system do
   before do
     @objective1 = FactoryBot.create(:objective)
-    @objective2 = FactoryBot.create(:objective)
   end
   context '目標削除ができるとき' do
     it 'ログインしたユーザーは自らが登録した目標の削除ができる' do
@@ -214,27 +213,17 @@ RSpec.describe '目標削除', type: :system do
       visit objective_path(@objective1.id)
       # 目標1に「削除」ボタンがあることを確認する
       expect(page).to have_content('目標を削除する')
-      # 削除確認画面でOKボタンを押すと、削除が完了しましたとの記述が表示され、レコードの数が１減ることを確認する
-      page.accept_confirm do
-        expect{
-          click_on :delete_btn
-          sleep 0.3
-        }.to change { Objective.count }.by(-1)
-      end
+      # 削除ボタンを押すと、「本当に削除してもよろしいですか？」と表示されたダイアログが表示され、OKボタンを押すと、削除が完了しましたとの記述が表示され、レコードの数が１減ることを確認する
+      expect{
+        click_on :delete_btn
+        expect(page.accept_confirm).to eq "本当に削除してもよろしいですか？"
+        expect(page).to have_content "削除が完了しました"
+      }.to change { Objective.count }.by(-1)
       # マイページに遷移したことを確認する
       expect(current_path).to eq(user_path(@objective1.user.id))
-      # トップページにはツイート1の内容が存在しないことを確認する（テキスト）
+      # トップページにはツイート1の内容が存在しないことを確認する
+      expect(page).to have_no_content("#{@objective1.big_area}")
     end
   end
-  context 'ツイート削除ができないとき' do
-    it 'ログインしたユーザーは自分以外が投稿したツイートの削除ができない' do
-      # ツイート1を投稿したユーザーでログインする
-      # ツイート2に「削除」ボタンが無いことを確認する
-    end
-    it 'ログインしていないとツイートの削除ボタンがない' do
-      # トップページに移動する
-      # ツイート1に「削除」ボタンが無いことを確認する
-      # ツイート2に「削除」ボタンが無いことを確認する
-    end
-  end
+
 end
