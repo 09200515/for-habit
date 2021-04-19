@@ -179,7 +179,7 @@ RSpec.describe '目標編集', type: :system do
       }.to change { Objective.count }.by(0)
       # 目標詳細ページに遷移したことを確認する
       expect(current_path).to eq(objective_path(@objective1.id))
-      # トップページには先ほど変更した内容の目標が存在することを確認する（テキスト）
+      # 目標詳細ページには先ほど変更した内容の目標が存在することを確認する（テキスト）
       expect(page).to have_content("#{@objective1.big_area}+編集したテキスト")
       expect(page).to have_content("#{@objective1.text}+編集したテキスト")
       expect(page).to have_content("#{@objective1.small_step1}+編集したテキスト")
